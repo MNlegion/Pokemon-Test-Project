@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pokemon Test Project</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-  </head>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pokemon Test Project</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+</head>
 
 
-  <body>
-  <section class="section">
-    <div class="container">
-      <h1 class="title">
-        Gotta Catch Em' All!
-      </h1>
-      <p class="subtitle">
-        My first website with <strong>Bulma</strong>, featuring Pokemon API!
-      </p>
-    </div>
-  </section>
+<body>
+  <main>
+    <header class="title">
+      <div class="container">
+        <h1 class="title-header">
+          Gotta Catch Em' All!
+        </h1>
+        <p class="subtitle">
+          My first website with <strong>Bulma</strong>, featuring Pokemon API!
+        </p>
+      </div>
+      </section>
+
+      <!-- pokemon search column -->
+
+      <div class="container">
+        <div class="card">
+          <h3 class="card-header">Search Pokedex</h3>
+          <form id="user-form" class="card-body">
+            <label class="form-label" for="username"></label>
+            <input name="username" id="poke-name" type="text" autofocus="true" class="form-input" />
+            <button type="submit" class="btn">Get Pokemon</button>
+          </form>
+        </div>
+      </div>
+
+
+      <!-- pokemon search results column -->
+
+      <div class="container">
+
+
+      </div>
+  </main>
 
   <script src="./assets/js/script.js"></script>
-  </body>
+</body>
+
 </html>
