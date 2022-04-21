@@ -1,51 +1,34 @@
-// Form ID
-const pokedexEl = document.querySelector('#user-form');
-// Input ID
-const nameInputEl = document.querySelector('#poke-name');
-var pokemonList = "https://pokeapi.co/api/v2/pokemon/?limit=10"
+document.querySelector('#search').addEventListener('click', getPokemon);
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+function lowerCaseName(string) {
+  return string.toLowerCase();
+}
 
-// fetch(pokemonList)
-//   .then(function (response) {
-//     response.json().then(function (data) {
-//       console.log(data.results);
-//     });
-//   });
+function getPokemon(e) {
+  const name = document.querySelector('#pokemonName').value;
+  const pokemonName = lowerCaseName(name);
 
-  // console.log('here we go again');
-  // fetch(pokemonList)
-  // .then(response => {
-  //   console.log(response);
-  //   response.json().then(data => {
-  //     console.log(data.results);
-  //   })
-  //   .then(data => {
-  //     document.getElementById('pokemon')
-  //   })
-  // })
+  fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
+    .then((response) => response.json())
+    .then((data) => {
+      document.querySelector('.pokemonBox').innerHTML = `
+      <div>
+        <img src="${data.sprites.other.dream_world.front_default}" 
+        alt="${capitalizeFirstLetter(data.name)}"
+        />
+      </div>
+      <div class="pokemonInfo">
+        <h1>${capitalizeFirstLetter(data.name)}</h1>
+        <p>Weight: ${data.weight}</p>
+      </div>
+      `;
 
-  var formSubmitHandler = function(event) {
-    event.preventDefault();
-    var pokemonSearch = nameInputEl.value.trim();
+    }).catch((err) => {
+      console.log('Pokemon not found', err);
+    });
 
-    if (pokemonSearch) {
-      getPokemon(pokemonSearch);
-      nameInputEl.value = "";
-    } else {
-      alert("Oh my, this Pokemon doesn't seem to exist!")
-    }
-    console.log(event);
-  };
+  e.preventDefault();
 
-  var getPokemon = function() {
-    fetch(pokemonList + name)
-    .then(response => {
-      console.log(response);
-      response.json().then(data => {
-        console.log(data);
-        displayPokemon(data, name);
-      });
-    })
-  };
-
-  pokedexEl.addEventListener('submit', formSubmitHandler);
-
+}
