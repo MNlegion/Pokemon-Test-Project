@@ -13,6 +13,7 @@ function getPokemon(e) {
   fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`)
     .then((response) => response.json())
     .then((data) => {
+      console.log();
       document.querySelector('.pokemonBox').innerHTML = `
       <div>
         <img src="${data.sprites.other.dream_world.front_default}" 
@@ -33,3 +34,5 @@ function getPokemon(e) {
 
 }
 
+  var searchPokemon = document.getElementById("pokemonName").value;
+  console.log(searchPokemon);
